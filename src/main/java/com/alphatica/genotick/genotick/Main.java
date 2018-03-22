@@ -30,7 +30,7 @@ import static java.lang.String.format;
 
 public class Main {
     public static final String DEFAULT_DATA_DIR = "data";
-    private static final String VERSION_STRING = "Genotick version 0.10.7 (copyleft 2017)";
+    private static final String VERSION_STRING = "Genotick version 0.11-SNAPSHOT (copyleft 2018)";
     private ErrorCode error = ErrorCode.NO_ERROR;
     private boolean canContinue = true;
     private UserInput input;

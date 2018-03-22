@@ -80,14 +80,14 @@ public class Reversal {
     
     private static double[] createReversedOHLC(double[] lastOriginal, double[] original, double[] lastReversed) {
         final double[] reversed = new double[original.length];
-        final double openDiff = original[Column.OHLC.OPEN] - lastOriginal[Column.OHLC.CLOSE];
-        final double highDiff = original[Column.OHLC.HIGH] - original[Column.OHLC.OPEN];
-        final double lowDiff = original[Column.OHLC.LOW] - original[Column.OHLC.OPEN];
-        final double closeDiff = original[Column.OHLC.CLOSE] - original[Column.OHLC.OPEN];
-        reversed[Column.OHLC.OPEN] = lastReversed[Column.OHLC.CLOSE] - openDiff;
-        reversed[Column.OHLC.HIGH] = reversed[Column.OHLC.OPEN] - lowDiff;
-        reversed[Column.OHLC.LOW] = reversed[Column.OHLC.OPEN] - highDiff;
-        reversed[Column.OHLC.CLOSE] = reversed[Column.OHLC.OPEN] - closeDiff;
+        final double openDiff = original[Column.OHLC.OPEN] / lastOriginal[Column.OHLC.CLOSE];
+        final double highDiff = original[Column.OHLC.HIGH] / original[Column.OHLC.OPEN];
+        final double lowDiff = original[Column.OHLC.LOW] / original[Column.OHLC.OPEN];
+        final double closeDiff = original[Column.OHLC.CLOSE] / original[Column.OHLC.OPEN];
+        reversed[Column.OHLC.OPEN] = lastReversed[Column.OHLC.CLOSE] * (2 - openDiff);
+        reversed[Column.OHLC.HIGH] = reversed[Column.OHLC.OPEN] * (2 - lowDiff);
+        reversed[Column.OHLC.LOW] = reversed[Column.OHLC.OPEN] * ( 2 - highDiff);
+        reversed[Column.OHLC.CLOSE] = reversed[Column.OHLC.OPEN] * (2 - closeDiff);
         return reversed;
     }
     

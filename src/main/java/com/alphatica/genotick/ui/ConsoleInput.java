@@ -36,7 +36,7 @@ class ConsoleInput extends BasicUserInput {
             settings.populationDAO = getString("Population storage", settings.populationDAO);
             settings.maximumProcessorInstructionFactor = getInteger("Maximum Processor instruction factor", settings.maximumProcessorInstructionFactor);
             settings.resultThreshold = getDouble("Result threshold",settings.resultThreshold);
-            settings.requireSymmetricalRobots = getBoolean("Require symmetrical robots", settings.requireSymmetricalRobots);
+            settings.requireSymmetricalRobots = getBoolean("Require symmetrical robots", settings.performTraining); // If 'perform training' is false then there is no need for symmetrical robots
             settings.chartMode = getEnumValue(GenoChartMode.class, "Chart mode", settings.chartMode);
             if (settings.performTraining) {
                 settings.maximumDataOffset = getInteger("Maximum data offset", settings.maximumDataOffset);
